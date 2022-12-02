@@ -1,9 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
-import { FaTshirt } from "react-icons/fa";
-import { MdLocalShipping } from "react-icons/md";
-import { HiCurrencyRupee } from "react-icons/hi";
-import Slider from "../components/slider";
+import Slider from "../components/Slider";
 import Link from "next/link";
 import Product from "../models/Product";
 import mongoose from "mongoose";
