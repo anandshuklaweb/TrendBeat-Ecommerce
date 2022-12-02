@@ -10,7 +10,6 @@ const MyOrder = ({ order, clearCart }) => {
   const [date, setDate] = useState();
 
   useEffect(() => {
-    console.log(products);
     const d = new Date(order.createdAt);
     setDate(d);
 
