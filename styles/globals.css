@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.carousel .thumbs-wrapper {
+  display: none;
+}
+
+.carousel .control-dots .dot {
+  box-shadow: 1px 1px 2px rgb(203 196 25 / 90%) !important;
+  background: #fff !important;
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.contact-cover {
+  background-position: 50%;
+  background-image: url("https://mdbootstrap.com/img/new/textures/full/171.jpg");
+  height: 300px;
+}
+
+.contact-block {
+  margin-top: -100px;
+  background: hsla(0, 0%, 100%, 0.8);
+  backdrop-filter: blur(30px);
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #2874f0 #ffb800;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #2874f0;
+  border: 1px solid #ffb800;
+}
