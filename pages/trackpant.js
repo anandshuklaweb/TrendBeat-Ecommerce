@@ -4,20 +4,20 @@ import Product from "../models/Product";
 import mongoose from "mongoose";
 import Head from "next/head";
 
-const Electronics = ({ products }) => {
+const TrackPant = ({ products }) => {
   return (
     <div>
       <Head>
-        <title>Electronics - TRENDBEAT</title>
-        <meta name="description" content="Electronics - TRENDBEAT" />
+        <title>Track Pant - TRENDBEAT</title>
+        <meta name="description" content="Track Pant - TRENDBEAT" />
       </Head>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24">
           <div className="flex flex-wrap -m-4 justify-center">
             {Object.keys(products).length === 0 && (
               <p>
-                Sorry, All the Hoodies are currently out of stock. New Stocks
-                coming soon.
+                Sorry, All the Track Pants are currently out of stock. New
+                Stocks coming soon.
               </p>
             )}
             {Object.keys(products).map((item) => {
@@ -39,7 +39,7 @@ const Electronics = ({ products }) => {
                   </Link>
                   <div className="mt-4 text-center md:text-left">
                     <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                      electronics
+                      Track Pant
                     </h3>
                     <h2 className="text-gray-900 title-font text-lg font-medium">
                       {products[item].title}
@@ -118,36 +118,36 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URI);
   }
 
-  let products = await Product.find({ category: "electronics" });
+  let products = await Product.find({ category: "trackpant" });
 
-  let electronics = {};
+  let trackpant = {};
   for (let item of products) {
-    if (item.title in electronics) {
+    if (item.title in trackpant) {
       if (
-        !electronics[item.title].color.includes(item.color) &&
+        !trackpant[item.title].color.includes(item.color) &&
         item.availableQty > 0
       ) {
-        electronics[item.title].color.push(item.color);
+        trackpant[item.title].color.push(item.color);
       }
 
       if (
-        !electronics[item.title].size.includes(item.size) &&
+        !trackpant[item.title].size.includes(item.size) &&
         item.availableQty > 0
       ) {
-        electronics[item.title].size.push(item.size);
+        trackpant[item.title].size.push(item.size);
       }
     } else {
-      electronics[item.title] = JSON.parse(JSON.stringify(item));
+      trackpant[item.title] = JSON.parse(JSON.stringify(item));
       if (item.availableQty > 0) {
-        electronics[item.title].color = [item.color];
-        electronics[item.title].size = [item.size];
+        trackpant[item.title].color = [item.color];
+        trackpant[item.title].size = [item.size];
       }
     }
   }
 
   return {
-    props: { products: JSON.parse(JSON.stringify(electronics)) },
+    props: { products: JSON.parse(JSON.stringify(trackpant)) },
   };
 }
 
-export default Electronics;
+export default TrackPant;

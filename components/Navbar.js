@@ -110,20 +110,20 @@ const Navbar = ({
 
         <div className="nav my-0 mx-auto">
           <ul className="flex items-center space-x-8 font-semibold md:text-lg">
-            <Link href={"/fashion"} className="hover:text-blue-400">
-              <li>Fashion</li>
+            <Link href={"/tshirts"} className="hover:text-blue-400">
+              <li>Tshirts</li>
             </Link>
-            <Link href={"/electronics"} className="hover:text-blue-400">
-              <li>Electronics</li>
+            <Link href={"/jackets"} className="hover:text-blue-400">
+              <li>Jackets</li>
             </Link>
-            <Link href={"/mobile"} className="hover:text-blue-400">
-              <li>Mobile</li>
+            <Link href={"/jeans"} className="hover:text-blue-400">
+              <li>Jeans</li>
             </Link>
-            <Link href={"/kitchen"} className="hover:text-blue-400">
-              <li>Home & Kitchen</li>
+            <Link href={"/kurta"} className="hover:text-blue-400">
+              <li>Kurta</li>
             </Link>
-            <Link href={"/books"} className="hover:text-blue-400">
-              <li>Books</li>
+            <Link href={"/trackpant"} className="hover:text-blue-400">
+              <li>Track Pants</li>
             </Link>
           </ul>
         </div>

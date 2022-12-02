@@ -4,19 +4,19 @@ import Product from "../models/Product";
 import mongoose from "mongoose";
 import Head from "next/head";
 
-const Mobile = ({ products }) => {
+const Jeans = ({ products }) => {
   return (
     <div>
       <Head>
-        <title>Mobile - TRENDBEAT</title>
-        <meta name="description" content="Mobile - TRENDBEAT" />
+        <title>Jeans - TRENDBEAT</title>
+        <meta name="description" content="Jeans - TRENDBEAT" />
       </Head>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24">
           <div className="flex flex-wrap -m-4 justify-center">
             {Object.keys(products).length === 0 && (
               <p>
-                Sorry, All the mobile are currently out of stock. New Stocks
+                Sorry, All the Jeans are currently out of stock. New Stocks
                 coming soon.
               </p>
             )}
@@ -39,7 +39,7 @@ const Mobile = ({ products }) => {
                   </Link>
                   <div className="mt-4 text-center md:text-left">
                     <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                      Mobile
+                      Jeans
                     </h3>
                     <h2 className="text-gray-900 title-font text-lg font-medium">
                       {products[item].title}
@@ -118,36 +118,36 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URI);
   }
 
-  let products = await Product.find({ category: "mobile" });
+  let products = await Product.find({ category: "jeans" });
 
-  let mobile = {};
+  let jeans = {};
   for (let item of products) {
-    if (item.title in mobile) {
+    if (item.title in jeans) {
       if (
-        !mobile[item.title].color.includes(item.color) &&
+        !jeans[item.title].color.includes(item.color) &&
         item.availableQty > 0
       ) {
-        mobile[item.title].color.push(item.color);
+        jeans[item.title].color.push(item.color);
       }
 
       if (
-        !mobile[item.title].size.includes(item.size) &&
+        !jeans[item.title].size.includes(item.size) &&
         item.availableQty > 0
       ) {
-        mobile[item.title].size.push(item.size);
+        jeans[item.title].size.push(item.size);
       }
     } else {
-      mobile[item.title] = JSON.parse(JSON.stringify(item));
+      jeans[item.title] = JSON.parse(JSON.stringify(item));
       if (item.availableQty > 0) {
-        mobile[item.title].color = [item.color];
-        mobile[item.title].size = [item.size];
+        jeans[item.title].color = [item.color];
+        jeans[item.title].size = [item.size];
       }
     }
   }
 
   return {
-    props: { products: JSON.parse(JSON.stringify(mobile)) },
+    props: { products: JSON.parse(JSON.stringify(jeans)) },
   };
 }
 
-export default Mobile;
+export default Jeans;

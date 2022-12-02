@@ -4,16 +4,22 @@ import Product from "../models/Product";
 import mongoose from "mongoose";
 import Head from "next/head";
 
-const Fashion = ({ products }) => {
+const Tshirt = ({ products }) => {
   return (
     <div>
       <Head>
-        <title>Fashion - TRENDBEAT</title>
-        <meta name="description" content="Fashion - TRENDBEAT" />
+        <title>Tshirt - TRENDBEAT</title>
+        <meta name="description" content="Tshirt - TRENDBEAT" />
       </Head>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24">
           <div className="flex flex-wrap -m-4 justify-center">
+            {Object.keys(products).length === 0 && (
+              <p>
+                Sorry, All the Tshirts are currently out of stock. New Stocks
+                coming soon.
+              </p>
+            )}
             {Object.keys(products).map((item) => {
               return (
                 <div
@@ -112,39 +118,39 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URI);
   }
 
-  let products = await Product.find({ category: "fashion" });
+  let products = await Product.find({ category: "tshirt" });
 
-  let fashion = {};
+  let tshirt = {};
   for (let item of products) {
-    if (item.title in fashion) {
+    if (item.title in tshirt) {
       if (
-        !fashion[item.title].color.includes(item.color) &&
+        !tshirt[item.title].color.includes(item.color) &&
         item.availableQty > 0
       ) {
-        fashion[item.title].color.push(item.color);
+        tshirt[item.title].color.push(item.color);
       }
 
       if (
-        !fashion[item.title].size.includes(item.size) &&
+        !tshirt[item.title].size.includes(item.size) &&
         item.availableQty > 0
       ) {
-        fashion[item.title].size.push(item.size);
+        tshirt[item.title].size.push(item.size);
       }
     } else {
-      fashion[item.title] = JSON.parse(JSON.stringify(item));
+      tshirt[item.title] = JSON.parse(JSON.stringify(item));
       if (item.availableQty > 0) {
-        fashion[item.title].color = [item.color];
-        fashion[item.title].size = [item.size];
+        tshirt[item.title].color = [item.color];
+        tshirt[item.title].size = [item.size];
       } else {
-        fashion[item.title].color = [];
-        fashion[item.title].size = [];
+        tshirt[item.title].color = [];
+        tshirt[item.title].size = [];
       }
     }
   }
 
   return {
-    props: { products: JSON.parse(JSON.stringify(fashion)) },
+    props: { products: JSON.parse(JSON.stringify(tshirt)) },
   };
 }
 
-export default Fashion;
+export default Tshirt;

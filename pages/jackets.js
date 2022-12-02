@@ -4,19 +4,19 @@ import Product from "../models/Product";
 import mongoose from "mongoose";
 import Head from "next/head";
 
-const Books = ({ products }) => {
+const Jackets = ({ products }) => {
   return (
     <div>
       <Head>
-        <title>Books - TRENDBEAT</title>
-        <meta name="description" content="Books - TRENDBEAT" />
+        <title>Jackets - TRENDBEAT</title>
+        <meta name="description" content="Jackets - TRENDBEAT" />
       </Head>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24">
           <div className="flex flex-wrap -m-4 justify-center">
             {Object.keys(products).length === 0 && (
               <p>
-                Sorry, All the books are currently out of stock. New Stocks
+                Sorry, All the Jackets are currently out of stock. New Stocks
                 coming soon.
               </p>
             )}
@@ -39,7 +39,7 @@ const Books = ({ products }) => {
                   </Link>
                   <div className="mt-4 text-center md:text-left">
                     <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                      Books
+                      Jacket
                     </h3>
                     <h2 className="text-gray-900 title-font text-lg font-medium">
                       {products[item].title}
@@ -118,36 +118,36 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URI);
   }
 
-  let products = await Product.find({ category: "books" });
+  let products = await Product.find({ category: "jacket" });
 
-  let books = {};
+  let jacket = {};
   for (let item of products) {
-    if (item.title in books) {
+    if (item.title in jacket) {
       if (
-        !books[item.title].color.includes(item.color) &&
+        !jacket[item.title].color.includes(item.color) &&
         item.availableQty > 0
       ) {
-        books[item.title].color.push(item.color);
+        jacket[item.title].color.push(item.color);
       }
 
       if (
-        !books[item.title].size.includes(item.size) &&
+        !jacket[item.title].size.includes(item.size) &&
         item.availableQty > 0
       ) {
-        books[item.title].size.push(item.size);
+        jacket[item.title].size.push(item.size);
       }
     } else {
-      books[item.title] = JSON.parse(JSON.stringify(item));
+      jacket[item.title] = JSON.parse(JSON.stringify(item));
       if (item.availableQty > 0) {
-        books[item.title].color = [item.color];
-        books[item.title].size = [item.size];
+        jacket[item.title].color = [item.color];
+        jacket[item.title].size = [item.size];
       }
     }
   }
 
   return {
-    props: { products: JSON.parse(JSON.stringify(books)) },
+    props: { products: JSON.parse(JSON.stringify(jacket)) },
   };
 }
 
-export default Books;
+export default Jackets;

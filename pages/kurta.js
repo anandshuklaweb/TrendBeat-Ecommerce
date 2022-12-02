@@ -4,19 +4,19 @@ import Product from "../models/Product";
 import mongoose from "mongoose";
 import Head from "next/head";
 
-const Kitchen = ({ products }) => {
+const Kurta = ({ products }) => {
   return (
     <div>
       <Head>
-        <title>Kitchen - TRENDBEAT</title>
-        <meta name="description" content="Kitchen - TRENDBEAT" />
+        <title>Kurta - TRENDBEAT</title>
+        <meta name="description" content="Kurta - TRENDBEAT" />
       </Head>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24">
           <div className="flex flex-wrap -m-4 justify-center">
             {Object.keys(products).length === 0 && (
               <p>
-                Sorry, All the kitchen appliances are currently out of stock.
+                Sorry, All the Kurta's appliances are currently out of stock.
                 New Stocks coming soon.
               </p>
             )}
@@ -39,7 +39,7 @@ const Kitchen = ({ products }) => {
                   </Link>
                   <div className="mt-4 text-center md:text-left">
                     <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                      Home & Kitchen
+                      Kurta
                     </h3>
                     <h2 className="text-gray-900 title-font text-lg font-medium">
                       {products[item].title}
@@ -118,36 +118,36 @@ export async function getServerSideProps(context) {
     await mongoose.connect(process.env.MONGO_URI);
   }
 
-  let products = await Product.find({ category: "kitchen" });
+  let products = await Product.find({ category: "kurta" });
 
-  let kitchen = {};
+  let kurta = {};
   for (let item of products) {
-    if (item.title in kitchen) {
+    if (item.title in kurta) {
       if (
-        !kitchen[item.title].color.includes(item.color) &&
+        !kurta[item.title].color.includes(item.color) &&
         item.availableQty > 0
       ) {
-        kitchen[item.title].color.push(item.color);
+        kurta[item.title].color.push(item.color);
       }
 
       if (
-        !kitchen[item.title].size.includes(item.size) &&
+        !kurta[item.title].size.includes(item.size) &&
         item.availableQty > 0
       ) {
-        kitchen[item.title].size.push(item.size);
+        kurta[item.title].size.push(item.size);
       }
     } else {
-      kitchen[item.title] = JSON.parse(JSON.stringify(item));
+      kurta[item.title] = JSON.parse(JSON.stringify(item));
       if (item.availableQty > 0) {
-        kitchen[item.title].color = [item.color];
-        kitchen[item.title].size = [item.size];
+        kurta[item.title].color = [item.color];
+        kurta[item.title].size = [item.size];
       }
     }
   }
 
   return {
-    props: { products: JSON.parse(JSON.stringify(kitchen)) },
+    props: { products: JSON.parse(JSON.stringify(kurta)) },
   };
 }
 
-export default Kitchen;
+export default Kurta;
