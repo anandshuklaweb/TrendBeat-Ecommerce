@@ -25,6 +25,10 @@
   backdrop-filter: blur(30px);
 }
 
+.product-img{
+  width: 500px;
+}
+
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
