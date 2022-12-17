@@ -33,7 +33,7 @@ const Jeans = ({ products }) => {
                   >
                     <img
                       alt="ecommerce"
-                      className="m-auto md:mx-0 h-[30vh] md:h-[36vh] block"
+                      className="m-auto md:mx-0 h-auto md:h-auto block"
                       src={products[item].img}
                     />
                   </Link>
