@@ -108,7 +108,7 @@ const Navbar = ({
           </Link>
         </div>
 
-        <div className="nav my-0 mx-auto">
+        <div className="nav my-2 mx-auto">
           <ul className="flex items-center space-x-8 font-semibold md:text-lg">
             <Link href={"/tshirts"} className="hover:text-blue-400">
               <li>Tshirts</li>
