@@ -122,9 +122,6 @@ const Navbar = ({
             <Link href={"/kurta"} className="hover:text-blue-400">
               <li>Kurta</li>
             </Link>
-            <Link href={"/trackpant"} className="hover:text-blue-400">
-              <li>Track Pants</li>
-            </Link>
           </ul>
         </div>
 
