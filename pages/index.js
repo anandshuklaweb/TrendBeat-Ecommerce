@@ -71,7 +71,7 @@ const Home = ({ products }) => {
       <section className="relative bg-gray-100 px-4 py-16 sm:px-8 lg:px-24 xl:px-24 2xl:px-24">
         <div className="flex flex-col lg:flex-row lg:-mx-8">
           <div className="w-full lg:px-8">
-            <h2 className="text-3xl text-center leading-normal font-semibold mt-4 mb-4">
+            <h2 className="text-xl md:text-3xl text-center leading-normal font-semibold mt-4 mb-4">
               TrendBeat is about connecting you to India's most beautiful
               products which showcases our rich heritage and culture.
             </h2>
@@ -88,49 +88,49 @@ const Home = ({ products }) => {
 
         <div className="md:flex md:flex-wrap mt-12 text-center md:-mx-4">
           <div className="md:w-1/2 md:px-2 lg:w-1/4">
-            <div className="bg-white rounded-lg border border-gray-300 p-8">
+            <div className="bg-white rounded-lg border border-gray-300 px-4 py-8">
               <img
                 src="/standard-warranty.jpg"
                 alt=""
                 className="h-20 mx-auto rounded-full object-cover"
               />
-              <h4 className="text-xl font-semibold mt-4">Standard Warranty</h4>
+              <h4 className="text-lg font-semibold mt-4">Standard Warranty</h4>
             </div>
           </div>
 
           <div className="md:w-1/2 md:px-2 mt-4 md:mt-0 lg:w-1/4">
-            <div className="bg-white rounded-lg border border-gray-300 p-8">
+            <div className="bg-white rounded-lg border border-gray-300 px-4 py-8">
               <img
                 src="/secure-payment.jpg"
                 alt=""
                 className="h-20 mx-auto rounded-full object-cover"
               />
 
-              <h4 className="text-xl font-semibold mt-4">Secure Payment</h4>
+              <h4 className="text-lg font-semibold mt-4">Secure Payment</h4>
             </div>
           </div>
 
           <div className="md:w-1/2 md:px-2 mt-4 md:mt-8 lg:mt-0 lg:w-1/4">
-            <div className="bg-white rounded-lg border border-gray-300 p-8">
+            <div className="bg-white rounded-lg border border-gray-300 px-4 py-8">
               <img
                 src="/free-shipping.jpg"
                 alt=""
                 className="h-20 mx-auto rounded-full object-cover"
               />
 
-              <h4 className="text-xl font-semibold mt-4">Free Shipping</h4>
+              <h4 className="text-lg font-semibold mt-4">Free Shipping</h4>
             </div>
           </div>
 
           <div className="md:w-1/2 md:px-2 mt-4 md:mt-8 lg:mt-0 lg:w-1/4">
-            <div className="bg-white rounded-lg border border-gray-300 p-8">
+            <div className="bg-white rounded-lg border border-gray-300 px-4 py-8">
               <img
                 src="/cod.jpg"
                 alt=""
                 className="h-20 mx-auto rounded-full object-cover"
               />
 
-              <h4 className="text-xl font-semibold mt-4">Cash on Delivery</h4>
+              <h4 className="text-lg font-semibold mt-4">Cash on Delivery</h4>
             </div>
           </div>
         </div>
@@ -140,9 +140,14 @@ const Home = ({ products }) => {
 };
 
 export async function getServerSideProps(context) {
-  if (!mongoose.connections[0].readyState) {
-    await mongoose.connect(process.env.MONGO_URI);
+  try {
+    if (!mongoose.connections[0].readyState) {
+      await mongoose.connect(process.env.MONGO_URI);
+    }
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
   }
+
 
   let products = await Product.find({});
 

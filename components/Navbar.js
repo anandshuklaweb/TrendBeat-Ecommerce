@@ -125,10 +125,10 @@ const Navbar = ({
           </ul>
         </div>
 
-        <div className="cursor-pointer items-center cart absolute right-0 mx-5 top-4 flex">
+        <div className="cursor-pointer items-center cart absolute right-0 mx-5 top-4 flex gap-2">
           {!user.value && (
             <Link href={"/login"}>
-              <button className="bg-blue-600 px-2 py-1 rounded-md text-sm text-white mx-2">
+              <button className="border border-[#FFB800] px-4 py-1 rounded-sm text-sm text-[#2874F0] font-semibold mx-2">
                 Login
               </button>
             </Link>
