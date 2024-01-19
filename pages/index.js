@@ -43,7 +43,7 @@ const Home = ({ products }) => {
                       passHref={true}
                       href={`product/${products[ item ].slug}`}
                     >
-                      <div class="h-96 overflow-hidden">
+                      <div class="h-auto overflow-hidden">
                         <img class="w-full h-full object-cover transition duration-1000 ease-in-out hover:scale-105 transform" src={products[ item ].img} />
                       </div>
                     </Link>

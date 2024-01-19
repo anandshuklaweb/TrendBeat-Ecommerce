@@ -134,9 +134,9 @@ const Footer = () => {
         <div className="bg-[#121d30] border-gray-500 border-t-2">
           <div className="container  my-0 mx-auto  py-4 ">
             <p className=" text-gray-300 text-sm text-center ">
-              © 2022 -
+              © 2024 -
               <Link href="/" className="text-gray-300 ml-1">
-                trendbeat.com
+                TrendBeat
               </Link>
               {"  "}
               All Rights Reserved.
