@@ -87,9 +87,9 @@ const Slug = ({ addToCart, buyNow, product, variants, error }) => {
           pauseOnHover
         />
         <div className="container px-5 py-16 mx-auto">
-          <div className="lg:w-4/5 mx-auto flex flex-wrap ">
+          <div className=" mx-auto flex flex-wrap ">
             <img
-              alt="ecommerce"
+              alt={product.title}
               className="object-contain rounded-lg mx-auto my-9 product-img"
               src={product.img}
             />
@@ -97,7 +97,7 @@ const Slug = ({ addToCart, buyNow, product, variants, error }) => {
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
                 TRENDBEAT
               </h2>
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+              <h1 className="text-gray-900 text-3xl title-font font-medium mb-1 py-2">
                 {product.title} ({product.size}/{product.color})
               </h1>
 
