@@ -16,7 +16,7 @@ const Footer = () => {
             </Link>
 
             <p className=" text-sm tracking-wider text-white px-2">
-              A Lifestyle Brand that started in 2021 with a single idea of
+              A Lifestyle Brand that started in 2024 with a single idea of
               bringing SWAG in whatever we offer to our Consumers.
             </p>
           </div>
@@ -28,34 +28,34 @@ const Footer = () => {
               <nav className="list-none mb-10">
                 <li>
                   <Link
-                    href={"/fashion"}
+                    href={"/tshirts"}
                     className="text-white text-sm hover:text-[#ffb800]"
                   >
-                    Fashion
+                    Tshirts
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href={"/electronics"}
+                    href={"/jackets"}
                     className="text-white text-sm hover:text-[#ffb800]"
                   >
-                    Electronics
+                    Jackets
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href={"/mobile"}
+                    href={"/jeans"}
                     className="text-white text-sm hover:text-[#ffb800]"
                   >
-                    Mobile
+                    Jeans
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href={"/books"}
+                    href={"/kurta"}
                     className="text-white text-sm hover:text-[#ffb800]"
                   >
-                    Books
+                    Kurtas
                   </Link>
                 </li>
               </nav>
