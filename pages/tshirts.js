@@ -13,7 +13,7 @@ const Tshirt = ({ products }) => {
       </Head>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
             {Object.keys(products).length === 0 && (
               <p>
                 Sorry, All the Tshirts are currently out of stock. New Stocks
@@ -22,7 +22,7 @@ const Tshirt = ({ products }) => {
             )}
             {Object.keys(products).map((item) => {
               return (
-                <div class="w-full py-6 px-3" key={products[ item ]._id}>
+                <div class="w-full py-4 px-3" key={products[ item ]._id}>
                   <div class="border bg-white shadow-md rounded-lg-overflow-hidden rounded-sm">
                     <Link
                       passHref={true}

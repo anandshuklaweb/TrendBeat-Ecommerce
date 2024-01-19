@@ -26,7 +26,7 @@ const Home = ({ products }) => {
           <div className=" my-0 mx-auto h-1 w-20 bg-blue-500 rounded mb-10"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
           {Object.keys(products).length === 0 && (
             <p>
               Sorry, All the Products are currently out of stock. New Stocks
@@ -37,7 +37,7 @@ const Home = ({ products }) => {
             .slice(0, 4)
             .map((item) => {
               return (
-                <div class="w-full py-6 px-3" key={products[ item ]._id}>
+                <div class="w-full py-4 px-3" key={products[ item ]._id}>
                   <div class="border bg-white shadow-md rounded-lg-overflow-hidden rounded-sm">
                     <Link
                       passHref={true}
