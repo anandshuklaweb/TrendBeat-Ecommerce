@@ -18,7 +18,7 @@ const Home = ({ products }) => {
 
       <Slider />
 
-      <div className="container px-5 py-16">
+      <div className=" px-5 py-16">
         <div className="text-center">
           <h1 className="sm:text-3xl text-2xl font-medium text-center title-font m-2 mb-4 text-gray-900 dark:text-white">
             Our Latest Collection
@@ -26,7 +26,7 @@ const Home = ({ products }) => {
           <div className=" my-0 mx-auto h-1 w-20 bg-blue-500 rounded mb-10"></div>
         </div>
 
-        <div className="flex flex-wrap -m-4 justify-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
           {Object.keys(products).length === 0 && (
             <p>
               Sorry, All the Products are currently out of stock. New Stocks
@@ -37,32 +37,34 @@ const Home = ({ products }) => {
             .slice(0, 4)
             .map((item) => {
               return (
-                <div
-                  key={products[item]._id}
-                  className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-2 border-2"
-                >
-                  <Link
-                    passHref={true}
-                    href={`product/${products[item].slug}`}
-                    className="flex relative rounded overflow-hidden justify-center text-center"
-                  >
-                    <img
-                      alt="ecommerce"
-                      className="m-auto md:mx-0 h-auto md:h-auto block"
-                      src={products[item].img}
-                    />
-                  </Link>
-                  <div className="mt-4 text-center md:text-left">
-                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                      {products[item].category.charAt(0).toUpperCase() +
-                        products[item].category.slice(1)}
-                    </h3>
-                    <h2 className="text-gray-900 title-font text-lg font-medium">
-                      {products[item].title}
-                    </h2>
-                    <p className="mt-1">₹{products[item].price}</p>
+                <div class="w-full py-4 px-3" key={products[ item ]._id}>
+                  <div class="border bg-white shadow-md rounded-lg-overflow-hidden rounded-sm">
+                    <Link
+                      passHref={true}
+                      href={`product/${products[ item ].slug}`}
+                    >
+                      <div class="h-auto overflow-hidden">
+                        <img class="w-full h-full object-cover transition duration-1000 ease-in-out hover:scale-105 transform" src={products[ item ].img} />
+                      </div>
+                    </Link>
+
+                    <div class="flex flex-col p-4 gap-2">
+                      <span class="text-sm text-gray-400">{products[ item ].category.charAt(0).toUpperCase() + products[ item ].category.slice(1)}</span>
+
+                      <Link 
+                        passHref={true}
+                        href={`product/${products[ item ].slug}`}
+                        class="text-gray-700 uppercase font-medium"
+                      >
+                        {products[ item ].title}
+                      </Link>
+
+                      <p class="text-gray-500">₹{products[ item ].price}</p>
+                    </div>
+
                   </div>
                 </div>
+
               );
             })}
         </div>
@@ -141,7 +143,7 @@ const Home = ({ products }) => {
 
 export async function getServerSideProps(context) {
   try {
-    if (!mongoose.connections[0].readyState) {
+    if (!mongoose.connections[ 0 ].readyState) {
       await mongoose.connect(process.env.MONGO_URI);
     }
   } catch (error) {
@@ -153,10 +155,10 @@ export async function getServerSideProps(context) {
 
   let hoodies = {};
   for (let item of products) {
-    hoodies[item.title] = JSON.parse(JSON.stringify(item));
+    hoodies[ item.title ] = JSON.parse(JSON.stringify(item));
     if (item.availableQty > 0) {
-      hoodies[item.title].color = [item.color];
-      hoodies[item.title].size = [item.size];
+      hoodies[ item.title ].color = [ item.color ];
+      hoodies[ item.title ].size = [ item.size ];
     }
   }
 

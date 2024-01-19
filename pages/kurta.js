@@ -13,7 +13,7 @@ const Kurta = ({ products }) => {
       </Head>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24">
-          <div className="flex flex-wrap -m-4 justify-center">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
             {Object.keys(products).length === 0 && (
               <p>
                 Sorry, All the Kurta's appliances are currently out of stock.
@@ -22,86 +22,91 @@ const Kurta = ({ products }) => {
             )}
             {Object.keys(products).map((item) => {
               return (
-                <div
-                  key={products[item]._id}
-                  className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-2 border-2 "
-                >
-                  <Link
-                    passHref={true}
-                    href={`product/${products[item].slug}`}
-                    className="flex relative rounded overflow-hidden justify-center text-center"
-                  >
-                    <img
-                      alt="ecommerce"
-                      className="m-auto md:mx-0 h-auto md:h-auto block"
-                      src={products[item].img}
-                    />
-                  </Link>
-                  <div className="mt-4 text-center md:text-left">
-                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                      Kurta
-                    </h3>
-                    <h2 className="text-gray-900 title-font text-lg font-medium">
-                      {products[item].title}
-                    </h2>
-                    <p className="mt-1">₹{products[item].price}</p>
-                    <div className="mt-3">
-                      {products[item].size.includes("S") && (
-                        <span className="border border-gray-300 px-1 mr-1">
-                          S
-                        </span>
-                      )}
-                      {products[item].size.includes("M") && (
-                        <span className="border border-gray-300 px-1 mr-1">
-                          M
-                        </span>
-                      )}
-                      {products[item].size.includes("L") && (
-                        <span className="border border-gray-300 px-1 mr-1">
-                          L
-                        </span>
-                      )}
-                      {products[item].size.includes("XL") && (
-                        <span className="border border-gray-300 px-1 mr-1">
-                          XL
-                        </span>
-                      )}
-                      {products[item].size.includes("XXL") && (
-                        <span className="border border-gray-300 px-1 mr-1">
-                          XXL
-                        </span>
-                      )}
+                <div class="w-full py-4 px-3" key={products[ item ]._id}>
+                  <div class="border bg-white shadow-md rounded-lg-overflow-hidden rounded-sm">
+                    <Link
+                      passHref={true}
+                      href={`product/${products[ item ].slug}`}
+                    >
+                      <div class="h-auto overflow-hidden">
+                        <img class="w-full h-full object-cover transition duration-1000 ease-in-out hover:scale-105 transform" src={products[ item ].img} />
+                      </div>
+                    </Link>
+
+                    <div class="flex flex-col p-4 gap-2">
+                      <span class="text-sm text-gray-400">{products[ item ].category.charAt(0).toUpperCase() + products[ item ].category.slice(1)}</span>
+
+                      <Link 
+                        passHref={true}
+                        href={`product/${products[ item ].slug}`}
+                        class="text-gray-700 uppercase font-medium"
+                      >
+                        {products[ item ].title}
+                      </Link>
+
+                      <p class="text-gray-500">₹{products[ item ].price}</p>
                     </div>
 
-                    <div className="mt-2">
-                      {products[item].color.includes("red") && (
-                        <button className="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>
-                      )}
+                    <div class="flex justify-between px-4 pb-4">
+                      <div className="">
+                        {products[item].size.includes("S") && (
+                          <span className="border border-gray-300 px-1 mr-1">
+                            S
+                          </span>
+                        )}
+                        {products[item].size.includes("M") && (
+                          <span className="border border-gray-300 px-1 mr-1">
+                            M
+                          </span>
+                        )}
+                        {products[item].size.includes("L") && (
+                          <span className="border border-gray-300 px-1 mr-1">
+                            L
+                          </span>
+                        )}
+                        {products[item].size.includes("XL") && (
+                          <span className="border border-gray-300 px-1 mr-1">
+                            XL
+                          </span>
+                        )}
+                        {products[item].size.includes("XXL") && (
+                          <span className="border border-gray-300 px-1 mr-1">
+                            XXL
+                          </span>
+                        )}
+                      </div>
 
-                      {products[item].color.includes("black") && (
-                        <button className="border-2 border-gray-300 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"></button>
-                      )}
+                      <div>
+                        {products[item].color.includes("red") && (
+                          <button className="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                        )}
 
-                      {products[item].color.includes("blue") && (
-                        <button className="border-2 border-gray-300 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
-                      )}
+                        {products[item].color.includes("black") && (
+                          <button className="border-2 border-gray-300 ml-1 bg-black rounded-full w-6 h-6 focus:outline-none"></button>
+                        )}
 
-                      {products[item].color.includes("green") && (
-                        <button className="border-2 border-gray-300 ml-1 bg-green-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                      )}
+                        {products[item].color.includes("blue") && (
+                          <button className="border-2 border-gray-300 ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                        )}
 
-                      {products[item].color.includes("yellow") && (
-                        <button className="border-2 border-gray-300 ml-1 bg-yellow-500 rounded-full w-6 h-6 focus:outline-none"></button>
-                      )}
+                        {products[item].color.includes("green") && (
+                          <button className="border-2 border-gray-300 ml-1 bg-green-700 rounded-full w-6 h-6 focus:outline-none"></button>
+                        )}
 
-                      {products[item].color.includes("gray") && (
-                        <button className="border-2 border-gray-300 ml-1 bg-gray-200 rounded-full w-6 h-6 focus:outline-none"></button>
-                      )}
+                        {products[item].color.includes("yellow") && (
+                          <button className="border-2 border-gray-300 ml-1 bg-yellow-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                        )}
 
-                      {products[item].color.includes("white") && (
-                        <button className="border-2 border-white ml-1 bg-gray-200 rounded-full w-6 h-6 focus:outline-none"></button>
-                      )}
+                        {products[item].color.includes("gray") && (
+                          <button className="border-2 border-gray-300 ml-1 bg-gray-200 rounded-full w-6 h-6 focus:outline-none"></button>
+                        )}
+
+                        {products[item].color.includes("white") && (
+                          <button className="border-2 border-white ml-1 bg-gray-200 rounded-full w-6 h-6 focus:outline-none"></button>
+                        )}
+                      </div>
                     </div>
+
                   </div>
                 </div>
               );
