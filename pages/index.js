@@ -26,7 +26,6 @@ const Home = ({ products }) => {
           <div className=" my-0 mx-auto h-1 w-20 bg-blue-500 rounded mb-10"></div>
         </div>
 
-        {/* <div className="flex flex-wrap -m-4 justify-center"> */}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {Object.keys(products).length === 0 && (
             <p>
