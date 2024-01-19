@@ -65,7 +65,7 @@ const Navbar = ({
           onMouseLeave={() => {
             setDropdown(false);
           }}
-          className="fixed right-10 top-4 z-30 cursor-pointer"
+          className="fixed right-12 top-6 z-30 cursor-pointer"
         >
           {dropdown && (
             <div className="absolute right-3 top-6 py-4 bg-white shadow-lg border rounded-md px-5 w-32 z-20">
@@ -125,7 +125,7 @@ const Navbar = ({
           </ul>
         </div>
 
-        <div className="cursor-pointer items-center cart absolute right-0 mx-5 top-4 flex gap-2">
+        <div className="cursor-pointer items-center cart absolute right-0 mx-5 flex gap-2">
           {!user.value && (
             <Link href={"/login"}>
               <button className="border border-[#FFB800] px-4 py-1 rounded-sm text-sm text-[#2874F0] font-semibold mx-2">
